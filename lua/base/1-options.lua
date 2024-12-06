@@ -4,7 +4,7 @@
 -- ----------------------------------------
 
 -- Theme
-vim.g.default_colorscheme = "tokyonight-night"
+vim.g.default_colorscheme = "tokyonight-moon"
 
 -- Options --------------------------------------------------------------------
 vim.opt.autochdir = true -- Use current file dir as working dir (See project.nvim).
