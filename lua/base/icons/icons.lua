@@ -129,5 +129,5 @@ return {
   MasonPending = "⟳",
 
   -- Render-markdown
-  RenderMarkdown = { ' ', ' ', '󰲥 ', '󰲧 ', '󰲩 ', '󰲫 ' }
+  RenderMarkdown = { '  ', '  ', '󰲥  ', '󰲧  ', '󰲩  ', '󰲫  ' }
 }
