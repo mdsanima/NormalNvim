@@ -34,8 +34,8 @@ return {
     opts = {
       dim_inactive = false,
       styles = {
-        comments = { italic = true },
-        keywords = { italic = true },
+        comments = { italic = false },
+        keywords = { italic = false },
       },
     }
   },
