@@ -69,6 +69,7 @@ vim.g.maplocalleader = "," -- Set default local leader key.
 vim.g.big_file = { size = 1024 * 5000, lines = 50000 } -- For files bigger than this, disable 'treesitter' (+5Mb).
 
 -- The next globals are toggleable with <space + l + u>
+vim.g.minianimate_disable = true -- Disable animations at start.
 vim.g.autoformat_enabled = false -- Enable auto formatting at start.
 vim.g.autopairs_enabled = false -- Enable autopairs at start.
 vim.g.cmp_enabled = true -- Enable completion at start.
