@@ -263,6 +263,19 @@ end, { desc = "Run e2e tests for the current nodejs project" })
 -- Special commands to toggle UI elements visibility.
 -------------------------------------------------------------------
 
+-- Toggle UI scrollbar option
+cmd("ToggleUIScrollbar", function()
+  if vim.g.scrollbar_show == nil then vim.g.scrollbar_show = true end
+  local scrollbar = require("scrollbar")
+  if vim.g.scrollbar_show then
+    scrollbar.setup({ show = false })
+    vim.g.scrollbar_show = false
+  else
+    scrollbar.setup({ show = true })
+    vim.g.scrollbar_show = true
+  end
+end, { desc = "Toggle scrollbar visibility on the right side" })
+
 -- Toggle UI winbar option
 cmd("ToggleUIWinbar", function()
   if vim.g.winbar_show == nil then vim.g.winbar_show = true end
