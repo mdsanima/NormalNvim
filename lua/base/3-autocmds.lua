@@ -263,6 +263,18 @@ end, { desc = "Run e2e tests for the current nodejs project" })
 -- Special commands to toggle UI elements visibility.
 -------------------------------------------------------------------
 
+-- Toggle UI aerial option
+cmd("ToggleUIAerial", function()
+  if vim.g.aerial_show == nil then vim.g.aerial_show = true end
+  if vim.g.aerial_show then
+    vim.cmd(":AerialToggle!")
+    vim.g.aerial_show = false
+  else
+    vim.cmd(":AerialToggle!")
+    vim.g.aerial_show = true
+  end
+end, { desc = "Toggle aerial visibility on the right side" })
+
 -- Toggle UI scrollbar option
 cmd("ToggleUIScrollbar", function()
   if vim.g.scrollbar_show == nil then vim.g.scrollbar_show = true end
