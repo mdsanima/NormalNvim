@@ -19,6 +19,7 @@
 --
 --       ## COMMANDS
 --       -> 10. Neotest commands.
+--       -> 11. Toggle commands.
 --       ->     Extra commands.
 
 local autocmd = vim.api.nvim_create_autocmd
@@ -257,6 +258,54 @@ cmd("TestNodejsE2e", function()
   vim.cmd(":ProjectRoot")                -- cd the project root (requires project.nvim)
   vim.cmd(":TermExec cmd='npm run e2e'") -- Conventional way to call e2e in nodejs (requires ToggleTerm)
 end, { desc = "Run e2e tests for the current nodejs project" })
+
+-- 11. Toggle commands
+-- Special commands to toggle UI elements visibility.
+-------------------------------------------------------------------
+
+-- Toggle UI aerial option
+cmd("ToggleUIAerial", function()
+  if vim.g.aerial_show == nil then vim.g.aerial_show = true end
+  if vim.g.aerial_show then
+    vim.cmd(":AerialToggle!")
+    vim.g.aerial_show = false
+  else
+    vim.cmd(":AerialToggle!")
+    vim.g.aerial_show = true
+  end
+end, { desc = "Toggle aerial visibility on the right side" })
+
+-- Toggle UI scrollbar option
+cmd("ToggleUIScrollbar", function()
+  if vim.g.scrollbar_show == nil then vim.g.scrollbar_show = true end
+  local scrollbar = require("scrollbar")
+  if vim.g.scrollbar_show then
+    scrollbar.setup({ show = false })
+    vim.g.scrollbar_show = false
+  else
+    scrollbar.setup({ show = true })
+    vim.g.scrollbar_show = true
+  end
+end, { desc = "Toggle scrollbar visibility on the right side" })
+
+-- Toggle UI winbar option
+cmd("ToggleUIWinbar", function()
+  if vim.g.winbar_show == nil then vim.g.winbar_show = true end
+  local heirline = require("heirline")
+  vim.g.winbar_show = not vim.g.winbar_show
+  local winbar_grp = vim.api.nvim_create_augroup("WinbarGrp", { clear = true })
+  if vim.g.winbar_show then
+    vim.o.winbar = heirline.eval_winbar()
+  else
+    vim.o.winbar = ""
+  end
+  vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter", "WinEnter" }, {
+    group = winbar_grp,
+    callback = function()
+      vim.o.winbar = vim.g.winbar_show and heirline.eval_winbar() or ""
+    end,
+  })
+end, { desc = "Toggle heirline winbar visibility (top breadcrumbs)" })
 
 -- Extra commands
 ----------------------------------------------
