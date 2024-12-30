@@ -61,6 +61,9 @@ vim.opt.shortmess:append { s = true, I = true } -- Disable startup message.
 vim.opt.backspace:append { "nostop" } -- Don't stop backspace at insert.
 vim.opt.diffopt:append { "algorithm:histogram", "linematch:60" } -- Enable linematch diff algorithm
 
+vim.opt.list = true -- Show custom characters.
+vim.opt.listchars = "extends:→,precedes:←,nbsp:·,trail:·,tab:» ," -- Show trail characters.
+
 local is_android = vim.fn.isdirectory('/data') == 1
 if is_android then vim.opt.mouse = "v" else vim.opt.mouse = "a" end -- Enable scroll for android
 
